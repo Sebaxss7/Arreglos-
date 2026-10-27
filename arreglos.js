@@ -27,15 +27,24 @@ function pintarArregloDerecha() {
 for (let i = 0; i < edadesDerecha.length; i++) {
         let edadActual = edadesDerecha[i];
         contenido += "<tr>";
-        contenido += '<td><button class="btn-mover">⬅</button></td>';
+        contenido += '<td><button class="btn-mover" onclick="moverHaciaIzquierda(' + i + ')">⬅</button></td>';
         contenido += "<td>" + edadActual + "</td>";
         contenido += '<td><button class="btn-eliminar" onclick="eliminarDerecho(' + i + ')">Eliminar</button></td>';
-        
         contenido += "</tr>";
     }
 
     tablaDer.innerHTML = contenido;
 }
+
+function moverHaciaIzquierda(indice) {
+let valorMovido = edadesDerecha[indice];
+edadesIzquierda.push(valorMovido);
+edadesDerecha.splice(indice, 1);
+pintarArregloIzquierda();
+    pintarArregloDerecha();
+}
+
+
 
 function eliminarDerecho(indice) {
     edadesDerecha.splice(indice, 1);
