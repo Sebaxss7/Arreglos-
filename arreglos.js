@@ -3,6 +3,7 @@ let edadesDerecha = [20, 25];
 
 window.onload = function() {
     pintarArregloIzquierda();
+    pintarArregloDerecha();
 };
 
 function agregarEdad() {
@@ -17,6 +18,28 @@ function agregarEdad() {
     } else {
         alert("Por favor ingrese una edad válida.");
     }
+}
+
+function pintarArregloDerecha() {
+    let tablaDer = document.getElementById("tablaDerecha");
+    let contenido = "";
+
+for (let i = 0; i < edadesDerecha.length; i++) {
+        let edadActual = edadesDerecha[i];
+        contenido += "<tr>";
+        contenido += '<td><button class="btn-mover">⬅</button></td>';
+        contenido += "<td>" + edadActual + "</td>";
+        contenido += '<td><button class="btn-eliminar" onclick="eliminarDerecho(' + i + ')">Eliminar</button></td>';
+        
+        contenido += "</tr>";
+    }
+
+    tablaDer.innerHTML = contenido;
+}
+
+function eliminarDerecho(indice) {
+    edadesDerecha.splice(indice, 1);
+    pintarArregloDerecha();
 }
 
 function pintarArregloIzquierda() {
