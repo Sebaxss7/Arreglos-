@@ -26,11 +26,14 @@ function pintarArregloIzquierda() {
         let edadActual = edadesIzquierda[i];
         contenido += "<tr>";
         contenido += "<td>" + edadActual + "</td>";
-        contenido += '<td><button class="btn-eliminar">Eliminar</button></td>';
+        contenido += '<td><button class="btn-eliminar" onclick="eliminarIzquierdo(' + i + ')">Eliminar</button></td>';
         contenido += '<td><button class="btn-mover">➜</button></td>';
         contenido += "</tr>";
     }
     tablaIzq.innerHTML = contenido;
 }
 
-
+function eliminarIzquierdo(indice) {
+    edadesIzquierda.splice(indice, 1);
+    pintarArregloIzquierda();
+}
